@@ -24,12 +24,11 @@ const config = {
     const snapShot = await userRef.get();
 
     if(!snapShot.exists) {
-        const { displayName, email } = userAuth;
+        const { email } = userAuth;
         const createdAt = new Date();
 
         try {
             await userRef.set({
-                displayName,
                 email,
                 createdAt,
                 ...additionalData
@@ -39,7 +38,7 @@ const config = {
         }
     }
 
-    return userRef;
+    return userRef
   }
 
   const provider = new firebase.auth.GoogleAuthProvider();

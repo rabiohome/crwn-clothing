@@ -31,9 +31,9 @@ class SignUp extends React.Component {
 
         try {
 
-            const { user } = auth.createUserWithEmailAndPassword(email, password);
+            const { user } = await auth.createUserWithEmailAndPassword(email, password);
 
-            await createUserProfileDocument(user, { displayName });
+            await createUserProfileDocument(user, { 'displayName' : displayName }); //TODO check whey do not saved firestore
 
             this.setState({
                 displayName : '',
